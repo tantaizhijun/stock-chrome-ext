@@ -3,16 +3,184 @@
         <meta charset="UTF-8"/>
         <title>Hello World</title>
         <style type="text/css">
+            #content{
+                overflow: hidden;
+                font-size: 10px;
+                color: #9d9d9d;
+            }
+            .flex{
+                display: flex;
+                justify-content: space-around;
+                white-space: nowrap;
+            }
+            .dapan{
+                color: #b466666e;
+            }
+            .zhishu{
+                margin: 5px;
+            }
 
+            .stock-wrapper{
+                overflow: scroll;
+                max-height: 400px;
+            }
+            .list-item span{
+                min-width: 60px;
+            }
         </style>
     </head>
     <body>
-        <div id="content" class="m10">
-           <div id="head">
+        <div id="content" class="">
+            <div class="dapan-wrapper">
+                <div id="dapan" class="dapan flex">
+                    <div class="zhishu ">
+                        <div class="flex">
+                            <span>上</span>&nbsp<span>3462.45</span>
+                        </div>
+                        <div class="flex">
+                            <span>+12.24</span>&nbsp<span>+1.56%</span>
+                        </div>
+                    </div>
+                    <div class="zhishu">
+                        <div class="flex">
+                            <span>深</span>&nbsp<span>34621.45</span>
+                        </div>
+                        <div class="flex">
+                            <span>+12230.24</span>&nbsp<span>+10.56%</span>
+                        </div>
+                    </div>
+                    <div class="zhishu">
+                        <div class="flex">
+                            <span>创</span>&nbsp<span>34621.45</span>
+                        </div>
+                        <div class="flex">
+                            <span>+12301.24</span>&nbsp<span>+10.56%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stock-wrapper">
+                <div id="stock-list">
+                    <div class="flex list-item">
+                        <span>名称</span>
+                        <span>价格</span>
+                        <span>涨幅</span>
+                        <span>涨价</span>
+                        <span>万手</span>
+                        <span>成交量</span>
+                        <span>换手率</span>
+                    </div>
+                    <div class="flex list-item">
+                        <span>古井贡酒</span>
+                        <span>123.234</span>
+                        <span>+5.67%</span>
+                        <span>+5.67</span>
+                        <span>1233.234万手</span>
+                        <span>1231213</span>
+                        <span>1231213</span>
+                    </div>
+                    <div class="flex list-item">
+                        <span>束带结发</span>
+                        <span>123.234</span>
+                        <span>+5.67%</span>
+                        <span>+5.67</span>
+                        <span>123.56万手</span>
+                        <span>12324</span>
+                        <span>12324</span>
+                    </div>
+                    <div class="flex list-item">
+                        <span>古井贡酒</span>
+                        <span>123.234</span>
+                        <span>+5.67%</span>
+                        <span>+5.67</span>
+                        <span>1233.234万手</span>
+                        <span>1231213</span>
+                        <span>1231213</span>
+                    </div>
+                    <div class="flex list-item">
+                        <span>古井贡酒</span>
+                        <span>123.234</span>
+                        <span>+5.67%</span>
+                        <span>+5.67</span>
+                        <span>1233.234万手</span>
+                        <span>1231213</span>
+                        <span>1231213</span>
+                    </div>
+                    <div class="flex list-item">
+                        <span>古井贡酒</span>
+                        <span>123.234</span>
+                        <span>+5.67%</span>
+                        <span>+5.67</span>
+                        <span>1233.234万手</span>
+                        <span>1231213</span>
+                        <span>1231213</span>
+                    </div>
+                    <div class="flex list-item">
+                        <span>古井贡酒</span>
+                        <span>123.234</span>
+                        <span>+5.67%</span>
+                        <span>+5.67</span>
+                        <span>1233.234万手</span>
+                        <span>1231213</span>
+                        <span>1231213</span>
+                    </div>
+                    <div class="flex list-item">
+                        <span>古井贡酒</span>
+                        <span>123.234</span>
+                        <span>+5.67%</span>
+                        <span>+5.67</span>
+                        <span>1233.234万手</span>
+                        <span>1231213</span>
+                        <span>1231213</span>
+                    </div>
+                    <div class="flex list-item">
+                        <span>古井贡酒</span>
+                        <span>123.234</span>
+                        <span>+5.67%</span>
+                        <span>+5.67</span>
+                        <span>1233.234万手</span>
+                        <span>1231213</span>
+                        <span>1231213</span>
+                    </div>
+                    <div class="flex list-item">
+                        <span>古井贡酒</span>
+                        <span>123.234</span>
+                        <span>+5.67%</span>
+                        <span>+5.67</span>
+                        <span>1233.234万手</span>
+                        <span>1231213</span>
+                        <span>1231213</span>
+                    </div>
+                    <div class="flex list-item">
+                        <span>古井贡酒</span>
+                        <span>123.234</span>
+                        <span>+5.67%</span>
+                        <span>+5.67</span>
+                        <span>1233.234万手</span>
+                        <span>1231213</span>
+                        <span>1231213</span>
+                    </div>
+                    <div class="flex list-item">
+                        <span>古井贡酒</span>
+                        <span>123.234</span>
+                        <span>+5.67%</span>
+                        <span>+5.67</span>
+                        <span>1233.234万手</span>
+                        <span>1231213</span>
+                        <span>1231213</span>
+                    </div>
+                    <div class="flex list-item">
+                        <span>古井贡酒</span>
+                        <span>123.234</span>
+                        <span>+5.67%</span>
+                        <span>+5.67</span>
+                        <span>1233.234万手</span>
+                        <span>1231213</span>
+                        <span>1231213</span>
+                    </div>
 
-           </div>
-            <div id="stock-list">
 
+                </div>
             </div>
 
         </div>

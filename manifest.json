@@ -5,6 +5,7 @@
    },
    "description": "my first webapp",
    "icons": {
+      "32": "icons/icon-64.png",
       "64": "icons/icon-64.png"
    },
    "manifest_version": 2,
