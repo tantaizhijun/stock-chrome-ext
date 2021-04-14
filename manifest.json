@@ -3,12 +3,12 @@
       "default_icon": "icons/icon-64.png",
       "default_popup": "popup.html"
    },
-   "description": "my first webapp",
+   "description": "一个查看股票的小插件",
    "icons": {
       "32": "icons/icon-64.png",
       "64": "icons/icon-64.png"
    },
    "manifest_version": 2,
-   "name": "Hello World!",
-   "version": "0.0.2"
+   "name": "股票小助手",
+   "version": "1.0.0"
 }

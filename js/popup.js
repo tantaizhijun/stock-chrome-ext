@@ -1,3 +1,10 @@
+//分时图 k线图 股票list
+
+var fenshi_img_url = "http://image.sinajs.cn/newchart/min/n/sz002007.gif"
+var k_line_img_url = "http://image.sinajs.cn/newchart/daily/n/sz000858.gif?0.8050786066113333"
+var stock_list_url = "https://hq.sinajs.cn/list=sh000001,sz399001,sz399006"
+
+
 // var BGPage = chrome.extension.getBackgroundPage();
 // function show() {
 //     var e = BGPage.popupView;
