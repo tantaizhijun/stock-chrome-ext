@@ -1,14 +1,24 @@
 {
+   "background": {
+      "scripts": ["js/jquery_1102.js","js/bg.js" ]
+   },
+   "content_scripts": [ {
+      "all_frames": false,
+      "js": ["js/jquery_1102.js","js/bg.js"],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_end"
+   } ],
    "browser_action": {
       "default_icon": "icons/icon-64.png",
-      "default_popup": "popup.html"
+      "default_popup": "popup.html",
+      "title": "title-ba",
+      "default_title": ""
    },
-   "description": "一个查看股票的小插件",
+   "description": "一个小插件",
    "icons": {
-      "32": "icons/icon-64.png",
-      "64": "icons/icon-64.png"
+      "32": "icons/icon-64.png"
    },
    "manifest_version": 2,
-   "name": "股票小助手",
+   "name": "小助手name",
    "version": "1.0.0"
 }
