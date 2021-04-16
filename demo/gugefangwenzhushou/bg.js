@@ -2442,7 +2442,7 @@ function(t, e) {
     },
     e.on = function(t) {
         chrome.browserAction.setIcon({
-            path: "/icons/icon.png"
+            path: "/icons/t.png"
         }),
         chrome.browserAction.setBadgeText({
             text: ""
