@@ -4,8 +4,8 @@
     //鼠标悬浮图标时的一些设置
     const hover_settings = {
         "refresh interval":900,     //鼠标悬浮时刷新间隔,毫秒
-        "show_name_len":2,          //股票名称显示字数,推荐1-4个;
-        "scroll_beyond":10          //股票数量超出多少时滚动显示
+        "scroll_beyond":10,          //股票名称显示字数,推荐1-4个;
+        "show_name_len":2          //股票数量超出多少时滚动显示
     }
 
     //我的股票
@@ -32,14 +32,6 @@
     // chrome.browserAction.setBadgeText({
     //     "text":"123.43"
     // });
-
-    let stock_url = urls_tx.st_info_url + my_stock.map(s =>{
-        if(s.startsWith("00")) {
-            return "s_sz" + s;
-        } else if(s.startsWith("60")){
-            return "s_sh" + s;
-        }
-    }).join(",")
 
     let utils = {
 
@@ -69,8 +61,25 @@
         }
     };
 
+    let getParameter = function (my_stock){
+        return my_stock.map(s =>{
+            if(s.startsWith("00")) {
+                return "s_sz" + s;
+            } else if(s.startsWith("60")){
+                return "s_sh" + s;
+            }
+        }).join(",");
+    }
+
     //鼠标悬浮刷新函数
     let hover_refresh = function() {
+        const all_stock = my_stock
+
+        if(all_stock.length > hover_settings.scroll_beyond) {
+            let s = all_stock.length % hover_settings.scroll_beyond == 0 ? all_stock.length / hover_settings.scroll_beyond : all_stock.length % hover_settings.scroll_beyond + 1;
+        }
+
+        let stock_url = urls_tx.st_info_url + getParameter();
 
         utils.ajax(stock_url,function (res) {
             let stocksArray = res.split(";");
