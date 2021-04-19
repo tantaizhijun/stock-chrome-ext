@@ -6,7 +6,7 @@
         "request_interval":1000,     //鼠标悬浮时数据刷新间隔,毫秒
         "show_name_len":2,          //股票名称显示字数,推荐1-4个;
         "scroll_beyond":3,          //股票数量超出多少时滚动显示
-        "scroll_interval":5,        //滚动间隔秒数(几秒换一组显示)
+        "scroll_interval":6,        //滚动间隔秒数(几秒换一组显示)
     }
 
     //我的股票
@@ -90,6 +90,7 @@
                 node.push(my_stock[i]);
             }
         }
+        nodeArr.push(node);
         return nodeArr;
     }
 
@@ -100,6 +101,7 @@
     var currentGroup = null;
     var currentGroupKey = 0
     let hover_refresh = function() {
+        if(my_stock==null||my_stock.length==0 ) {return}
         //按滚动个数分组
         if(nodeArr == null) {
             if(my_stock.length > hover_settings.scroll_beyond){
@@ -117,11 +119,10 @@
         } else {
             paramStock = currentGroup
         }
-        currentGroupKey ++;
-
-        let parameter = getParameterByStock(paramStock);
         currentGroup = paramStock;
-
+        currentGroupKey = currentGroupKey > 10000 ? 0 :  ++currentGroupKey;
+        //组装本组stock请求参数
+        let parameter = getParameterByStock(currentGroup);
         let stock_url = urls_tx.st_info_url + parameter
         utils.ajax(stock_url,function (res) {
             let stocksArray = res.split(";");
