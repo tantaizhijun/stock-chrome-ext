@@ -3,9 +3,10 @@
 
     //鼠标悬浮图标时的一些设置
     const hover_settings = {
-        "refresh interval":900,     //鼠标悬浮时刷新间隔,毫秒
+        "request_interval":1000,     //鼠标悬浮时数据刷新间隔,毫秒
         "show_name_len":2,          //股票名称显示字数,推荐1-4个;
-        "scroll_beyond":10          //股票数量超出多少时滚动显示
+        "scroll_beyond":3,          //股票数量超出多少时滚动显示
+        "scroll_interval":5,        //滚动间隔秒数(几秒换一组显示)
     }
 
     //我的股票
@@ -32,14 +33,6 @@
     // chrome.browserAction.setBadgeText({
     //     "text":"123.43"
     // });
-
-    let stock_url = urls_tx.st_info_url + my_stock.map(s =>{
-        if(s.startsWith("00")) {
-            return "s_sz" + s;
-        } else if(s.startsWith("60")){
-            return "s_sh" + s;
-        }
-    }).join(",")
 
     let utils = {
 
@@ -69,9 +62,67 @@
         }
     };
 
-    //鼠标悬浮刷新函数
-    let hover_refresh = function() {
 
+    function getParameterByStock(stockArr){
+        return  stockArr.map(s =>{
+            if(s.startsWith("00")) {
+                return "s_sz" + s;
+            } else if(s.startsWith("60")){
+                return "s_sh" + s;
+            }
+        }).join(",");
+    }
+
+    function initNodeArr(my_stock) {
+        debugger
+        let nodeArr = [];
+        let node = [];
+        for (let i = 0; i < my_stock.length; i++) {
+            if(i == 0){
+                node.push(my_stock[i]);
+                continue;
+            }
+            if(i % hover_settings.scroll_beyond === 0) {
+                nodeArr.push(node);
+                node = [];
+                node.push(my_stock[i]);
+            } else {
+                node.push(my_stock[i]);
+            }
+        }
+        return nodeArr;
+    }
+
+
+    //鼠标悬浮刷新函数
+    var i = 0;              //用于取分组stock
+    var nodeArr = null;     //存储分组stock
+    var currentGroup = null;
+    var currentGroupKey = 0
+    let hover_refresh = function() {
+        //按滚动个数分组
+        if(nodeArr == null) {
+            if(my_stock.length > hover_settings.scroll_beyond){
+                nodeArr = initNodeArr(my_stock);
+            } else {
+                nodeArr = [my_stock];
+            }
+        }
+        //获取一组stock的参数
+        let paramStock
+        if(currentGroupKey % hover_settings.scroll_interval == 0) {
+            paramStock = nodeArr[i % nodeArr.length];
+            i++;
+            i = i > 10000 ? 0 : i;
+        } else {
+            paramStock = currentGroup
+        }
+        currentGroupKey ++;
+
+        let parameter = getParameterByStock(paramStock);
+        currentGroup = paramStock;
+
+        let stock_url = urls_tx.st_info_url + parameter
         utils.ajax(stock_url,function (res) {
             let stocksArray = res.split(";");
             let title = "";
@@ -92,7 +143,7 @@
         })
     }
 
-    setInterval(hover_refresh,900)
+    setInterval(hover_refresh,hover_settings["request_interval"])
 
 
 })(null,window)
