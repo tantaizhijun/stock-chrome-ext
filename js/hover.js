@@ -5,7 +5,7 @@
     const hover_settings = {
         "request_interval":1000,     //鼠标悬浮时数据刷新间隔,毫秒
         "show_name_len":2,          //股票名称显示字数,推荐1-4个;
-        "scroll_beyond":3,          //股票数量超出多少时滚动显示
+        "scroll_beyond":6,          //股票数量超出多少时滚动显示
         "scroll_interval":6,        //滚动间隔秒数(几秒换一组显示)
     }
 
