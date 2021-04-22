@@ -5,6 +5,22 @@ var k_line_img_url = "http://image.sinajs.cn/newchart/daily/n/sz000858.gif?0.805
 var stock_list_url = "https://hq.sinajs.cn/list=sh000001,sz399001,sz399006"
 
 
+document.getElementById("setting").addEventListener("click", function (e) {
+    chrome.tabs.create({
+        url: "/options.html"
+    })
+})
+
+
+//设置图标
+// setInterval(function () {
+//     chrome.browserAction.setIcon({path: 'img/icons/bbt.png'});
+// },1000);
+
+//设置图标提示
+// chrome.browserAction.setBadgeText({
+//     "text":"123.43"
+// });
 
 // var BGPage = chrome.extension.getBackgroundPage();
 // function show() {

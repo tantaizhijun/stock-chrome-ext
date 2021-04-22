@@ -1,38 +1,17 @@
 
 (function($,window){
 
-    //鼠标悬浮图标时的一些设置
-    const hover_settings = {
-        "request_interval":1000,     //鼠标悬浮时数据刷新间隔,毫秒
-        "show_name_len":2,          //股票名称显示字数,推荐1-4个;
-        "scroll_beyond":3,          //股票数量超出多少时滚动显示
-        "scroll_interval":6,        //滚动间隔秒数(几秒换一组显示)
-    }
-
-    //我的股票
-    const my_stock = ["002601","002304","601012","002594","000002","603799","600276"];
-
-    //腾讯股票Api
+    //腾讯Api
     const urls_tx = {
         "st_info_url" :"http://qt.gtimg.cn/q="
     }
 
-    //新浪股票Api
+    //新浪Api
     const url_xl = {
         "st_info_url" :"https://hq.sinajs.cn/list=",
         "st_k_line" : "http://image.sinajs.cn/newchart/daily/n/",
         "st_fenshi" : "http://image.sinajs.cn/newchart/min/n/",
     }
-
-    //设置图标
-    // setInterval(function () {
-    //     chrome.browserAction.setIcon({path: 'img/icons/bbt.png'});
-    // },1000);
-
-    //设置图标提示
-    // chrome.browserAction.setBadgeText({
-    //     "text":"123.43"
-    // });
 
     let utils = {
 
@@ -73,21 +52,20 @@
         }).join(",");
     }
 
-    function initNodeArr(my_stock) {
-        debugger
+    function initNodeArr(stocks) {
         let nodeArr = [];
         let node = [];
-        for (let i = 0; i < my_stock.length; i++) {
+        for (let i = 0; i < stocks.length; i++) {
             if(i == 0){
-                node.push(my_stock[i]);
+                node.push(stocks[i]);
                 continue;
             }
-            if(i % hover_settings.scroll_beyond === 0) {
+            if(i % hoverSettings.page_size === 0) {
                 nodeArr.push(node);
                 node = [];
-                node.push(my_stock[i]);
+                node.push(stocks[i]);
             } else {
-                node.push(my_stock[i]);
+                node.push(stocks[i]);
             }
         }
         nodeArr.push(node);
@@ -101,18 +79,17 @@
     var currentGroup = null;
     var currentGroupKey = 0
     let hover_refresh = function() {
-        if(my_stock==null||my_stock.length==0 ) {return}
+        if(appData.stockOrder==null||appData.stockOrder.length==0 ) {return}
         //按滚动个数分组
-        if(nodeArr == null) {
-            if(my_stock.length > hover_settings.scroll_beyond){
-                nodeArr = initNodeArr(my_stock);
-            } else {
-                nodeArr = [my_stock];
-            }
+        if(appData.stockOrder.length > hoverSettings.page_size){
+            nodeArr = initNodeArr(appData.stockOrder);
+        } else {
+            nodeArr = [appData.stockOrder];
         }
+
         //获取一组stock的参数
         let paramStock
-        if(currentGroupKey % hover_settings.scroll_interval == 0) {
+        if(currentGroupKey % hoverSettings.scroll_interval == 0) {
             paramStock = nodeArr[i % nodeArr.length];
             i++;
             i = i > 10000 ? 0 : i;
@@ -133,7 +110,7 @@
                 }
                 let infoStr = stockInfo.split("=")[1];
                 let stockArr = infoStr.split("~");
-                let name = stockArr[1].replaceAll(" ","").substr(0,hover_settings.show_name_len);
+                let name = stockArr[1].replaceAll(" ","").substr(0,hoverSettings.show_name_len);
                 let price = stockArr[3];
                 let rate = stockArr[5];
                 let fuhao = rate >=0 ? "↑" : "↓";
@@ -144,8 +121,10 @@
         })
     }
 
-    setInterval(hover_refresh,hover_settings["request_interval"])
-
+    function init(){
+        setInterval(hover_refresh,hoverSettings["request_interval"]);
+    }
+    init();
 
 })(null,window)
 

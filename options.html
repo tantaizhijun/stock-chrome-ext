@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义设置</title>
+    <style>
+        #content {
+            background-color: #fff;
+            margin: 30px auto 0;
+            width: 800px;
+            border-radius: 5px;
+        }
+        #content>h1 {
+            padding: 20px 15px;
+            text-align: center;
+            background: #22b4b4;
+            border-radius: 5px 5px 0 0;
+            -webkit-border-radius: 5px 5px 0 0;
+            color: #fff;
+            font-size: 18px;
+        }
+        .group-title{
+            display: inline-block;
+            border-radius: 5px 5px 0 0;
+            background-color: #ffd87f;
+            width: fit-content;
+            padding: 5px;
+            margin: 0;
+        }
+        .group-wrapper{
+            background-color: #dde9e5;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .group-wrapper .item{
+            padding: 5px;
+            margin: 5px 0;
+        }
+        .item input{
+            margin-top: 5px;
+        }
+        .label-title{
+            width: 120px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .flex{
+            display: flex;
+        }
+        .setting-group{
+            margin: 20px 0;
+        }
+        .stock-column>label{
+            border: solid 1px #ffb5b5;
+            border-radius: 3px;
+            margin: 5px;
+            padding: 4px;
+            background-color: #fffeea;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h1>自定义设置</h1>
+        <div class="wrapper">
+            <div class="setting-group">
+                <h3 class="group-title">图标悬浮设置</h3>
+                <span class="tips">
+                    Tips: 此设置用于鼠标悬浮在扩展图标上时的效果。
+                </span>
+                <div class="group-wrapper flex">
+                    <div class="item">
+                        <label for="request_interval" class="label-title">股价刷新间隔(毫秒)：</label>
+                        <input id="request_interval" type="text" value="1000" placeholder="1000=1秒">
+                    </div>
+                    <div class="item">
+                        <label for="show_name_len" class="label-title">股票名称显示字数：</label>
+                        <input id="show_name_len" type="text" value="4" placeholder="1 - 4个字">
+                    </div>
+                    <div class="item">
+                        <label for="page_size" class="label-title">每页显示数量：</label>
+                        <input id="page_size" type="text" value="6">
+                    </div>
+                    <div class="item">
+                        <label for="scroll_interval" class="label-title">换页间隔时间(秒)：</label>
+                        <input id="scroll_interval" type="text" value="6">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h3 class="group-title">页面设置</h3>
+                <div class="group-wrapper">
+                    <div class="item">
+                        <label for="is_show_dp" class="label-title">是否显示顶部大盘：</label>
+                        <input id="is_show_dp" type="checkbox">
+                    </div>
+                    <div class="item">
+                        <label for="stock-column" class="label-title">股票列表显示列：</label>
+                        <form class="stock-column" action="" id="stock-column">
+                            <label for="st_name">名称
+                                <input id="st_name" type="checkbox">
+                            </label>
+                            <label for="st_price">最新价
+                                <input id="st_price" type="checkbox">
+                            </label>
+                            <label for="st_zf">涨幅
+                                <input id="st_zf" type="checkbox">
+                            </label>
+                            <label for="st_zd">涨跌
+                                <input id="st_zd" type="checkbox">
+                            </label>
+                            <label for="st_syl">市盈率
+                                <input id="st_syl" type="checkbox">
+                            </label>
+                            <label for="st_zs">总手
+                                <input id="st_zs" type="checkbox">
+                            </label>
+                            <label for="st_cost">成本价
+                                <input id="st_cost" type="checkbox">
+                            </label>
+                            <label for="st_ccl">持仓量
+                                <input id="st_ccl" type="checkbox">
+                            </label>
+                            <label for="st_sy">收益
+                                <input id="st_sy" type="checkbox">
+                            </label>
+                        </form>
+                    </div>
+                    <div class="item">
+                        <label for="is_show_icon" class="label-title">是否显示角标：</label>
+                        <input id="is_show_icon" type="checkbox">
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h3 class="group-title">数据管理</h3>
+                <div class="group-wrapper">
+                    <div class="item">
+                        <label for="scroll_interval" class="label-title">数据备份：</label>
+                        <button id="exportData">导出文件</button>
+                    </div>
+                    <div class="item">
+                        <label for="scroll_interval" class="label-title">数据导入：</label>
+                        <input type="file" id="importFile" placeholder=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery_1102.js"></script>
+<script src="js/options.js"></script>
+<script src="js/localStorage.js"></script>
+
+</html>
