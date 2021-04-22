@@ -11,6 +11,17 @@ document.getElementById("setting").addEventListener("click", function (e) {
     })
 })
 
+
+//设置图标
+// setInterval(function () {
+//     chrome.browserAction.setIcon({path: 'img/icons/bbt.png'});
+// },1000);
+
+//设置图标提示
+// chrome.browserAction.setBadgeText({
+//     "text":"123.43"
+// });
+
 // var BGPage = chrome.extension.getBackgroundPage();
 // function show() {
 //     var e = BGPage.popupView;

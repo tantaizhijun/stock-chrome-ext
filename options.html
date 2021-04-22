@@ -79,8 +79,8 @@
                         <input id="show_name_len" type="text" value="4" placeholder="1 - 4个字">
                     </div>
                     <div class="item">
-                        <label for="scroll_beyond" class="label-title">每页显示数量：</label>
-                        <input id="scroll_beyond" type="text" value="6">
+                        <label for="page_size" class="label-title">每页显示数量：</label>
+                        <input id="page_size" type="text" value="6">
                     </div>
                     <div class="item">
                         <label for="scroll_interval" class="label-title">换页间隔时间(秒)：</label>
@@ -141,8 +141,7 @@
                 <div class="group-wrapper">
                     <div class="item">
                         <label for="scroll_interval" class="label-title">数据备份：</label>
-                        <button>导出文件</button>
-
+                        <button id="exportData">导出文件</button>
                     </div>
                     <div class="item">
                         <label for="scroll_interval" class="label-title">数据导入：</label>
@@ -153,4 +152,8 @@
         </div>
     </div>
 </body>
+<script src="js/jquery_1102.js"></script>
+<script src="js/options.js"></script>
+<script src="js/localStorage.js"></script>
+
 </html>
