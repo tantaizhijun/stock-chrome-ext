@@ -7,7 +7,7 @@
     }
     var hoverSettings = {
         request_interval:1000,    //数据刷新间隔,毫秒
-        show_name_len:3,          //名称显示字数,推荐1-4个;
+        show_name_len:4,          //名称显示字数,推荐1-4个;
         page_size:6,          //每页个数
         scroll_interval:5,        //滚动间隔秒数
     }
