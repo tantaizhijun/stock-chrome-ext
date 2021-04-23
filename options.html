@@ -6,7 +6,7 @@
     <style>
         #content {
             background-color: #fff;
-            margin: 30px auto 0;
+            margin: 30px auto 50px;
             width: 800px;
             border-radius: 5px;
         }
@@ -58,6 +58,28 @@
             background-color: #fffeea;
         }
 
+        table{
+            width: 100%;
+            font-size: 14px;
+            text-align: center;
+        }
+        table tr{
+            line-height: 22px;
+        }
+        .st-cbj{
+            border-left: solid 1px grey;
+            color:  #417ea8;
+        }
+        .st-syl,.st-zsy{
+            color: red;
+        }
+
+        .st-sy-down {
+            color: #00c700;
+        }
+        .st-sy-up{
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -149,11 +171,27 @@
                     </div>
                 </div>
             </div>
+
+            <div class="setting-group">
+                <h3 class="group-title">我的股票</h3>
+                <span class="tips">
+                    <input type="text" placeholder="输入股票代码或简称查询">
+                    <button id="addStock">添加</button>
+                </span>
+                <div class="group-wrapper">
+                    <div class="stock-wrapper">
+                        <div id="stock-table">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
 <script src="js/jquery_1102.js"></script>
-<script src="js/options.js"></script>
+<script src="js/utils.js"></script>
 <script src="js/localStorage.js"></script>
+<script src="js/options.js"></script>
 
 </html>
