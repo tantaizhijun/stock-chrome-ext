@@ -45,6 +45,11 @@ $(document).ready(function(){
         alert("待实现")
     })
 
+    //添加
+    document.getElementById("addStock").addEventListener("click", function (e) {
+        alert("待实现")
+    })
+
 
     function initTable(){
         window.initStockMap();//刷新本地数据
