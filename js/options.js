@@ -73,7 +73,9 @@ $(document).ready(function(){
                 html += "<td>" + stockMap[key][field] + "</td>>"
             })
             html += "</tr>"
-        })
+        });
+
+        html += "</table>"
         document.getElementById("stock-table").innerHTML= html;
     }
 
