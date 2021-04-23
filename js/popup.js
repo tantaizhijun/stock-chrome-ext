@@ -11,6 +11,33 @@ document.getElementById("setting").addEventListener("click", function (e) {
     })
 })
 
+function initTable(){
+    window.initStockMap();//刷新本地数据
+    let stockMap = appData.stockMap;
+
+    let html = "<table><tr>"
+    //显示字段
+    let fields = Object.keys(stField);
+
+    //table头
+    fields.forEach(field => {
+        html += "<th>" + stField[field] + "</th>"
+    })
+    html += "</tr>"
+
+    //table
+    let stKeyList = Object.keys(stockMap);
+    stKeyList.forEach(key => {
+        html += "<tr>"
+        fields.forEach(field =>{
+            html += "<td>" + stockMap[key][field] + "</td>>"
+        })
+        html += "</tr>"
+    })
+    document.getElementById("stock-list").innerHTML= html;
+}
+
+setInterval(initTable,1000);
 
 //设置图标
 // setInterval(function () {

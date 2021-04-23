@@ -47,9 +47,11 @@ $(document).ready(function(){
 
 
     function initTable(){
+        window.initStockMap();//刷新本地数据
         let stockMap = appData.stockMap;
 
         let html = "<table><tr>"
+        //显示字段
         let fields = Object.keys(stField);
 
         //table头
@@ -69,6 +71,7 @@ $(document).ready(function(){
         })
         document.getElementById("stock-table").innerHTML= html;
     }
+
     setInterval(initTable,1000);
 })
 

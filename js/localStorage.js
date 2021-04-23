@@ -22,9 +22,9 @@
         lprice:"最低价",
     }
 
-    function init(){
+    function initStockMap(){
         if(appData.stockOrder != null && appData.stockOrder.length > 0){
-            let parameter = utils.getSParameterByStock( appData.stockOrder);
+            let parameter = utils.getFParameterByStock( appData.stockOrder);
             let stock_url = utils.urls_tx.st_info_url + parameter
             utils.ajax(stock_url,function (res) {
                 let stocksArray = res.split(";");
@@ -41,7 +41,7 @@
                         price:stockArr[3],
                         zfu:stockArr[32],
                         zd:stockArr[31],
-                        syl:stockArr[39],
+                        pe:stockArr[39],
                         hprice:stockArr[41],
                         lprice:stockArr[42],
                     }
@@ -70,10 +70,11 @@
         }
     }
 
-    init();
+    initStockMap();
     window.appData = appData;
     window.appStorage = appStorage;
     window.hoverSettings = hoverSettings;
     window.stField = stField;
+    window.initStockMap=initStockMap;
 
 })(null)
