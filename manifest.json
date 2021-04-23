@@ -1,6 +1,6 @@
 {
    "background": {
-      "scripts": ["js/jquery_1102.js","js/localStorage.js","js/hover.js" ]
+      "scripts": ["js/jquery_1102.js","js/utils.js","js/localStorage.js","js/hover.js" ]
    },
 
    "browser_action": {

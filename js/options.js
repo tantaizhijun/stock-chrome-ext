@@ -46,6 +46,29 @@ $(document).ready(function(){
     })
 
 
+    function initTable(){
+        let stockMap = appData.stockMap;
 
+        let html = "<table><tr>"
+        let fields = Object.keys(stField);
+
+        //table头
+        fields.forEach(field => {
+            html += "<th>" + stField[field] + "</th>"
+        })
+        html += "</tr>"
+
+        //table
+        let stKeyList = Object.keys(stockMap);
+        stKeyList.forEach(key => {
+            html += "<tr>"
+            fields.forEach(field =>{
+                html += "<td>" + stockMap[key][field] + "</td>>"
+            })
+            html += "</tr>"
+        })
+        document.getElementById("stock-table").innerHTML= html;
+    }
+    setInterval(initTable,1000);
 })
 

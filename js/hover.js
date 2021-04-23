@@ -1,56 +1,5 @@
 
-(function($,window){
-
-    //腾讯Api
-    const urls_tx = {
-        "st_info_url" :"http://qt.gtimg.cn/q="
-    }
-
-    //新浪Api
-    const url_xl = {
-        "st_info_url" :"https://hq.sinajs.cn/list=",
-        "st_k_line" : "http://image.sinajs.cn/newchart/daily/n/",
-        "st_fenshi" : "http://image.sinajs.cn/newchart/min/n/",
-    }
-
-    let utils = {
-
-        ajax: function (url, callback) {
-            let XHR = (function () {
-                try {
-                    if (window.XMLHttpRequest) {
-                        return new window.XMLHttpRequest();
-                    } else {
-                        return new window.ActiveXObject("Microsoft.XMLHTTP");
-                    }
-                } catch (e) {
-                }
-            })();
-
-            XHR.open("get", url, true);
-            XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-            XHR.onreadystatechange = function () {
-                if (XHR.readyState == 4 && XHR.status == 200) {
-                    // var ret = eval("(" + XHR.responseText + ")");
-                    // var ret = new Function("return " + XHR.responseText )();
-                    // extension中不能使用eval，new Function等方法
-                    callback(unescape(XHR.responseText.replace(/\\/ig, '%')));
-                }
-            }
-            XHR.send(null);
-        }
-    };
-
-
-    function getParameterByStock(stockArr){
-        return  stockArr.map(s =>{
-            if(s.startsWith("00")) {
-                return "s_sz" + s;
-            } else if(s.startsWith("60")){
-                return "s_sh" + s;
-            }
-        }).join(",");
-    }
+(function($){
 
     function initNodeArr(stocks) {
         let nodeArr = [];
@@ -99,8 +48,8 @@
         currentGroup = paramStock;
         currentGroupKey = currentGroupKey > 10000 ? 0 :  ++currentGroupKey;
         //组装本组stock请求参数
-        let parameter = getParameterByStock(currentGroup);
-        let stock_url = urls_tx.st_info_url + parameter
+        let parameter = utils.getSParameterByStock(currentGroup);
+        let stock_url = utils.urls_tx.st_info_url + parameter
         utils.ajax(stock_url,function (res) {
             let stocksArray = res.split(";");
             let title = "";
@@ -126,5 +75,5 @@
     }
     init();
 
-})(null,window)
+})(null)
 
