@@ -37,7 +37,7 @@ function initTable(){
     document.getElementById("stock-list").innerHTML= html;
 }
 
-setInterval(initTable,1000);
+// setInterval(initTable,1000);
 
 //设置图标
 // setInterval(function () {
