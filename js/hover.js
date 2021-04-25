@@ -26,11 +26,15 @@
     var i = 0;              //用于取分组stock
     var nodeArr = null;     //存储分组stock
     var currentGroup = null;
-    var currentGroupKey = 0
+    var currentGroupKey = 0     //TODO 换页与刷新有bug
     let hover_refresh = function() {
+        //获取本地存储数据
+        let hoverSettings = JSON.parse(localStorage.getItem("hoverSettings"));
+        let appData = JSON.parse(localStorage.getItem("appData"));
+
         if(appData.stockOrder==null||appData.stockOrder.length==0 ) {return}
         //按滚动个数分组
-        if(appData.stockOrder.length > hoverSettings.page_size){
+        if(appData.stockOrder.length > hoverSettings["page_size"]){
             nodeArr = initNodeArr(appData.stockOrder);
         } else {
             nodeArr = [appData.stockOrder];
