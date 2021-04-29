@@ -18,8 +18,9 @@ $(document).ready(function(){
     document.getElementById("show_name_len").addEventListener("change", function (e) {
         let value = document.getElementById("show_name_len").value;
         if(value != "1" && value != "2" && value != "3" && value != "4") {
+            value = 4;
             alert("提示：请输入1-4之间的数字")
-            document.getElementById("show_name_len").value = 4 ;
+            document.getElementById("show_name_len").value = value ;
         }
         let hoverSettingsLocal = JSON.parse(localStorage.getItem("hoverSettings"));
         hoverSettingsLocal["show_name_len"] = Number(value);
@@ -32,13 +33,14 @@ $(document).ready(function(){
         let value = document.getElementById("page_size").value;
         if(isNaN(value)){
             alert("请输入数字数字")
-            document.getElementById("page_size").value = 6;
+            number = 6;
+            document.getElementById("page_size").value = number;
         }
         let number = Number(value);
         if(number < 0 || number > 20) {
             alert("请输入1-20之间的数字");
-            document.getElementById("page_size").value = 6;
-            return;
+            number = 6;
+            document.getElementById("page_size").value = number;
         }
         let hoverSettingsLocal = JSON.parse(localStorage.getItem("hoverSettings"));
         hoverSettingsLocal["page_size"] = number;
@@ -51,7 +53,8 @@ $(document).ready(function(){
         let value = document.getElementById("scroll_interval").value;
         if(isNaN(value)){
             alert("请输入数字数字");
-            document.getElementById("page_size").value = 5;
+            value = 5;
+            document.getElementById("page_size").value = value;
             return
         }
         let number = Number(value);

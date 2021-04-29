@@ -1,7 +1,8 @@
 
 (function($){
 
-    function initNodeArr(stocks) {
+    //按每页个数分组
+    function initNodeArr(stocks,pageSize) {
         let nodeArr = [];
         let node = [];
         for (let i = 0; i < stocks.length; i++) {
@@ -9,7 +10,7 @@
                 node.push(stocks[i]);
                 continue;
             }
-            if(i % hoverSettings.page_size === 0) {
+            if(i % pageSize === 0) {
                 nodeArr.push(node);
                 node = [];
                 node.push(stocks[i]);
@@ -21,6 +22,24 @@
         return nodeArr;
     }
 
+    const date1 = new Date();
+    date1.setHours(11,30);
+    const date2 = new Date();
+    date2.setHours(13,30);
+
+    //是否在交易时间
+    function inTradeTime(){
+        //交易时间在9:00--11:30或者13:30--15：00，并且在周一至周五（暂未判断节假日）
+        const date = new Date();
+        const day = date.getDay();
+        if(!(day >= 1 && day <= 5)){
+            return false;
+        }
+        if(!(date.getHours() > 9 && date.getTime() < date1.getTime()) && !(date.getTime() > date2.getTime() && date.getHours() < 15)){
+            return false;
+        }
+        return true;
+    }
 
     //鼠标悬浮刷新函数
     var i = 0;              //用于取分组stock
@@ -28,14 +47,21 @@
     var currentGroup = null;
     var currentGroupKey = 0     //TODO 换页与刷新有bug
     let hover_refresh = function() {
+        if(!inTradeTime()){
+            console.log("非交易时间");
+            return;
+        }
+
         //获取本地存储数据
         let hoverSettings = JSON.parse(localStorage.getItem("hoverSettings"));
         let appData = JSON.parse(localStorage.getItem("appData"));
 
-        if(appData.stockOrder==null||appData.stockOrder.length==0 ) {return}
-        //按滚动个数分组
+        if(appData.stockOrder==null||appData.stockOrder.length==0 ) {
+            return
+        }
+        //按每页个数分组
         if(appData.stockOrder.length > hoverSettings["page_size"]){
-            nodeArr = initNodeArr(appData.stockOrder);
+            nodeArr = initNodeArr(appData.stockOrder,hoverSettings["page_size"]);
         } else {
             nodeArr = [appData.stockOrder];
         }
@@ -70,6 +96,7 @@
                 title += name + " " + price +"("+rate+"%)" +  "\n";
             });
             //设置title,鼠标悬浮可显示
+            console.log(title)
             chrome.browserAction.setTitle({title: title});
         })
     }
