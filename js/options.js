@@ -1,33 +1,63 @@
 $(document).ready(function(){
 
+    //从本地存储获取信息
+    let hoverSettingsLocal = JSON.parse(localStorage.getItem("hoverSettings"));
+
     //请求间隔
-    document.getElementById("request_interval").value = hoverSettings.request_interval;
+    document.getElementById("request_interval").value = hoverSettingsLocal["request_interval"];
     document.getElementById("request_interval").addEventListener("change", function (e) {
         let value = document.getElementById("request_interval").value;
-        hoverSettings.request_interval = Number(value);
+        //从localstorage获取,设置并存储
+        let hoverSettingsLocal = JSON.parse(localStorage.getItem("hoverSettings"));
+        hoverSettingsLocal["request_interval"] = Number(value);
+        localStorage.setItem("hoverSettings",JSON.stringify(hoverSettingsLocal));
+
     })
     //名称长度
-    document.getElementById("show_name_len").value = hoverSettings.show_name_len;
+    document.getElementById("show_name_len").value = hoverSettingsLocal["show_name_len"];
     document.getElementById("show_name_len").addEventListener("change", function (e) {
         let value = document.getElementById("show_name_len").value;
         if(value != "1" && value != "2" && value != "3" && value != "4") {
             alert("提示：请输入1-4之间的数字")
             document.getElementById("show_name_len").value = 4 ;
         }
-        hoverSettings.show_name_len = Number(value);
+        let hoverSettingsLocal = JSON.parse(localStorage.getItem("hoverSettings"));
+        hoverSettingsLocal["show_name_len"] = Number(value);
+        localStorage.setItem("hoverSettings",JSON.stringify(hoverSettingsLocal));
     })
+
     //每页数量
-    document.getElementById("page_size").value = hoverSettings.page_size;
+    document.getElementById("page_size").value = hoverSettingsLocal["page_size"];
     document.getElementById("page_size").addEventListener("change", function (e) {
         let value = document.getElementById("page_size").value;
-        hoverSettings.page_size = Number(value);
+        if(isNaN(value)){
+            alert("请输入数字数字")
+            document.getElementById("page_size").value = 6;
+        }
+        let number = Number(value);
+        if(number < 0 || number > 20) {
+            alert("请输入1-20之间的数字");
+            document.getElementById("page_size").value = 6;
+            return;
+        }
+        let hoverSettingsLocal = JSON.parse(localStorage.getItem("hoverSettings"));
+        hoverSettingsLocal["page_size"] = number;
+        localStorage.setItem("hoverSettings",JSON.stringify(hoverSettingsLocal));
     })
 
     //换页间隔
-    document.getElementById("scroll_interval").value = hoverSettings.scroll_interval;
+    document.getElementById("scroll_interval").value = hoverSettingsLocal["scroll_interval"];
     document.getElementById("scroll_interval").addEventListener("change", function (e) {
         let value = document.getElementById("scroll_interval").value;
-        hoverSettings.scroll_interval = Number(value);
+        if(isNaN(value)){
+            alert("请输入数字数字");
+            document.getElementById("page_size").value = 5;
+            return
+        }
+        let number = Number(value);
+        let hoverSettingsLocal = JSON.parse(localStorage.getItem("hoverSettings"));
+        hoverSettingsLocal["scroll_interval"] = number;
+        localStorage.setItem("hoverSettings",JSON.stringify(hoverSettingsLocal));
     })
 
 
@@ -52,7 +82,7 @@ $(document).ready(function(){
 
 
     function initTable(){
-        window.initStockMap();//刷新本地数据
+        window.refreshStockMap();//刷新本地数据
         let stockMap = appData.stockMap;
 
         let html = "<table><tr>"
@@ -79,6 +109,6 @@ $(document).ready(function(){
         document.getElementById("stock-table").innerHTML= html;
     }
 
-    setInterval(initTable,1000);
+    // setInterval(initTable,1000);
 })
 

@@ -12,7 +12,7 @@ document.getElementById("setting").addEventListener("click", function (e) {
 })
 
 function initTable(){
-    window.initStockMap();//刷新本地数据
+    window.refreshStockMap();//刷新本地数据
     let stockMap = appData.stockMap;
 
     let html = "<table><tr>"

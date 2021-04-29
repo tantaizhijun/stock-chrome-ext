@@ -1,17 +1,18 @@
 (function ($) {
 
-    var appData = {
+    let appData = {
         stockDP:["sh000001","sz399001","sz399006"],
         stockMap:{},
-        stockOrder:["601888","000538","000568","002304","601012","002601","002594","000002","603799","600276"]
+        stockOrder:["002304","000568","601888","000538","002594","000002"]
+        //"601012","002601","002594","000002","603799","600276"
     }
-    var hoverSettings = {
+    let hoverSettings = {
         request_interval:1000,    //数据刷新间隔,毫秒
         show_name_len:4,          //名称显示字数,推荐1-4个;
         page_size:6,          //每页个数
         scroll_interval:5,        //滚动间隔秒数
     }
-    var stField = {
+    let stField = {
         key:"股票编号",
         name:"股票名称",
         price:"当前价",
@@ -22,7 +23,10 @@
         lprice:"最低价",
     }
 
-    function initStockMap(){
+
+    //刷新
+    function refreshStockMap(){
+        //init appData.stockMap
         if(appData.stockOrder != null && appData.stockOrder.length > 0){
             let parameter = utils.getFParameterByStock( appData.stockOrder);
             let stock_url = utils.urls_tx.st_info_url + parameter
@@ -47,19 +51,30 @@
                     }
                 })
             })
-        }
+        };
     }
 
+    function initLocalStorage(){
+        refreshStockMap();
+
+        //把默认配置放进local
+        let hoverSettingsLocal = JSON.parse(localStorage.getItem("hoverSettings"));
+        if(hoverSettingsLocal){
+            hoverSettings = Object.assign(hoverSettings,hoverSettingsLocal);
+        }
+        localStorage.setItem("hoverSettings",JSON.stringify(hoverSettings));
+        localStorage.setItem("appData",JSON.stringify(appData));
+    }
 
     var appStorage = {
-        add : function (stock){
+        addStock : function (stock){
             if(stock) {
                 appData.stockOrder.push(stock.key)
                 appData.stockMap[stock.key] = stock;
                 localStorage.setItem("appData",appData);
             }
         },
-        remove : function (key){
+        removeStock : function (key){
             if(key) {
                 delete appData.stockMap[key];
                 let number = appData.stockOrder.indexOf(key);
@@ -70,11 +85,11 @@
         }
     }
 
-    initStockMap();
+    initLocalStorage();
     window.appData = appData;
     window.appStorage = appStorage;
     window.hoverSettings = hoverSettings;
     window.stField = stField;
-    window.initStockMap=initStockMap;
+    window.refreshStockMap=refreshStockMap;
 
 })(null)
