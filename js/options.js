@@ -112,6 +112,6 @@ $(document).ready(function(){
         document.getElementById("stock-table").innerHTML= html;
     }
 
-    // setInterval(initTable,1000);
+    setInterval(initTable,1000);
 })
 
