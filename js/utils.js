@@ -25,7 +25,7 @@
             if (!(day >= 1 && day <= 5)) {
                 return false;
             }
-            if (!(date.getHours() > 9 && date.getTime() < date1.getTime()) && !(date.getHours() >= 13 && date.getHours() <= 15)) {
+            if (!(date.getHours() >= 9 && date.getTime() < date1.getTime()) && !(date.getHours() >= 13 && date.getHours() <= 15)) {
                 return false;
             }
             return true;
