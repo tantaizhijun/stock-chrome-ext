@@ -3,10 +3,14 @@
         <meta charset="UTF-8"/>
         <title>股票小助手</title>
         <style type="text/css">
-            #content{
+		
+		#content{
+		color: #00000059
+		}
+           /* #content{
                 overflow: hidden;
                 font-size: 10px;
-                /*color: #9d9d9d;*/
+                color: #9d9d9d;
                 width: 330px;
                 height: 330px;
             }
@@ -47,13 +51,14 @@
                 font-size: 13px;
                 font-weight: bold;
             }
+			*/
         </style>
     </head>
     <body>
         <div id="content" class="">
             <div class="dapan-wrapper">
                 <div id="dapan" class="dapan flex">
-                    <div class="zhishu ">
+                    <!--<div class="zhishu ">
                         <div class="flex">
                             <span>上证</span>&nbsp<span>3462.45</span>
                         </div>
@@ -77,17 +82,18 @@
                             <span>+12301.24</span>&nbsp<span>+10.56%</span>
                         </div>
                     </div>
+					-->
                 </div>
             </div>
             <div class="stock-wrapper">
                 <div id="stock-list">
-                    <div style="text-align: center;font-size: 15px">未完成的功能</div>
+                    <div id="marks" style="text-align: center;font-size: 15px">未完功能</div>
                 </div>
             </div>
         </div>
         <div class="footer">
-            <span>© 2021 股票小助手</span>
-            <span id="setting" class="float-right" href="#">设置</span>
+        
+            <span id="setting" href="#" style="color:gray">--------------</span>
         </div>
     </body>
     <script src="js/jquery_1102.js"></script>
@@ -95,5 +101,6 @@
     <script src="js/localStorage.js"></script>
     <script src="js/popup.js"></script>
     <script src="js/hover.js"></script>
+    <script src="js/booksmarks.js"></script>
 
 </html>

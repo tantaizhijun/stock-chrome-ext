@@ -29,11 +29,9 @@
     var nodeArr = null;     //存储分组stock
     var currentGroup = null;
     var currentGroupKey = 0     //TODO 换页与刷新有bug
+	var titleg = "";
     let hover_refresh = function() {
-        if(!utils.inTradeTime()){
-            console.log("非交易时间");
-            return;
-        }
+       
 
         //获取本地存储数据
         let hoverSettings = JSON.parse(localStorage.getItem("hoverSettings"));
@@ -60,12 +58,20 @@
         }
         currentGroup = paramStock;
         currentGroupKey = currentGroupKey > 10000 ? 0 :  ++currentGroupKey;
+		
+		
+		if(!utils.inTradeTime()){
+            console.log("非交易时间");
+			chrome.browserAction.setTitle({title: titleg});
+            return;
+        }
+		
         //组装本组stock请求参数
         let parameter = utils.getSParameterByStock(currentGroup);
         let stock_url = utils.urls_tx.st_info_url + parameter
         utils.ajax(stock_url,function (res) {
             let stocksArray = res.split(";");
-            let title = "";
+			let arr = [];
             stocksArray.forEach(stockInfo =>{
                 if(!stockInfo.trim()) {
                     return
@@ -76,10 +82,19 @@
                 let price = stockArr[3];
                 let rate = stockArr[5];
                 let fuhao = rate >=0 ? "↑" : "↓";
-                title += name + " " + price +"("+rate+"%)" +  "\n";
-            });
-            //设置title,鼠标悬浮可显示
-            console.log(title)
+				let obj = {
+					"name":name,
+					"price":price,
+					"rate":rate,
+					};
+					arr.push(obj);
+            });			
+			//arr.sort((a, b) => Number(a.rate) - Number(b.rate)).reverse();
+			let title = "";
+			arr.forEach((a) => {
+				title += a['name'] + a['price'] +"("+a['rate'] + "\n";
+			})
+			titleg = title;
             chrome.browserAction.setTitle({title: title});
         })
     }

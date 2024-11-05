@@ -32,6 +32,20 @@
             padding: 10px;
             border-radius: 5px;
         }
+		#stockManage{
+		    display: flex;
+			flex-wrap: wrap;
+		}
+		.stItem{
+		   padding: 5px;
+		}
+		.delSt{
+			display: none
+		}
+		.delSt:hover{
+			display: inline
+		}
+		
         .group-wrapper .item{
             padding: 5px;
             margin: 5px 0;
@@ -93,11 +107,11 @@
                 </span>
                 <div class="group-wrapper flex">
                     <div class="item">
-                        <label for="request_interval" class="label-title">股价刷新间隔(毫秒)：</label>
+                        <label for="request_interval" class="label-title">刷新间隔(毫秒)：</label>
                         <input id="request_interval" type="text" value="1000" disabled placeholder="1000=1秒">
                     </div>
                     <div class="item">
-                        <label for="show_name_len" class="label-title">股票名称显示字数：</label>
+                        <label for="show_name_len" class="label-title">名称显示字数：</label>
                         <input id="show_name_len" type="text" value="4" placeholder="1 - 4个字">
                     </div>
                     <div class="item">
@@ -120,7 +134,7 @@
                         <input id="is_show_dp" type="checkbox">
                     </div>
                     <div class="item">
-                        <label for="stock-column" class="label-title">股票列表显示列：</label>
+                        <label for="stock-column" class="label-title">列表显示列：</label>
                         <form class="stock-column" action="" id="stock-column">
                             <label for="st_name">名称
                                 <input id="st_name" type="checkbox">
@@ -169,13 +183,22 @@
                         <label for="scroll_interval" class="label-title">数据导入：</label>
                         <input type="file" id="importFile" placeholder=""/>
                     </div>
+					 <div class="item">
+                        <label for="scroll_interval" class="label-title">数据管理：
+						<span class="tips">
+							<input id="addStockInput" type="text" placeholder="输入代码">
+							<button id="addSt">添加</button>
+						</span>
+						</label>
+                        <div id="stockManage"></div>
+                    </div>
                 </div>
             </div>
 
             <div class="setting-group">
                 <h3 class="group-title">我的股票</h3>
                 <span class="tips">
-                    <input type="text" placeholder="输入股票代码或简称查询">
+                    <input id="addStockValue" type="text" placeholder="输入代码或简称查询">
                     <button id="addStock">添加</button>
                 </span>
                 <div class="group-wrapper">

@@ -77,12 +77,60 @@ $(document).ready(function(){
         console.log(value1)
         alert("待实现")
     })
+	
+
 
     //添加
     document.getElementById("addStock").addEventListener("click", function (e) {
-        alert("待实现")
+
+        let st = document.getElementById("addStockValue").value;
+        appData.stockOrder.push(st);
+        localStorage.setItem("appData",JSON.stringify(appData));
+        initManageList();
+    })
+	
+	document.getElementById("addSt").addEventListener("click", function (e) {
+
+        let st = document.getElementById("addStockInput").value;
+        appData.stockOrder.push(st);
+        localStorage.setItem("appData",JSON.stringify(appData));
+        initManageList();
+		document.getElementById("addStockInput").value = "";
     })
 
+	
+	//删除stock
+	function initManageList(){
+			   //列表
+		let stockOrder = appData.stockOrder;
+		if(stockOrder){
+			let htmlList = "";
+			stockOrder.forEach(e => {
+				htmlList += "<span id='st" + e + "' class='stItem'>" + e + "</span>";
+			});
+			document.getElementById("stockManage").innerHTML = htmlList
+		}
+		
+		
+		let lis  = document.getElementsByClassName("stItem");
+		for(let i = 0;i < lis.length;i++) {
+		    lis[i].addEventListener("click", function (e) {
+				
+				if(confirm("确认 & 取消")){
+					stockOrder = stockOrder.filter(function(item) {
+						return item != e.currentTarget.innerText;
+					});
+					appData.stockOrder = stockOrder;
+					localStorage.setItem("appData",JSON.stringify(appData));
+					initManageList();
+				}
+            })
+        }
+	}
+
+	initManageList();	
+	
+	
 
     function initTable(){
         window.refreshStockMap();//刷新本地数据
@@ -112,6 +160,6 @@ $(document).ready(function(){
         document.getElementById("stock-table").innerHTML= html;
     }
 
-    setInterval(initTable,1000);
+   setInterval(initTable,1000);
 })
 
