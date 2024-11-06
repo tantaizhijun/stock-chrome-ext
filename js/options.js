@@ -92,7 +92,9 @@ $(document).ready(function(){
 	document.getElementById("addSt").addEventListener("click", function (e) {
 
         let st = document.getElementById("addStockInput").value;
-        appData.stockOrder.push(st);
+        if(appData.stockOrder.indexOf(st) == -1){
+            appData.stockOrder.push(st);
+        }
         localStorage.setItem("appData",JSON.stringify(appData));
         initManageList();
 		document.getElementById("addStockInput").value = "";

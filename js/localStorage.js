@@ -25,10 +25,10 @@
 
     //刷新
     function refreshStockMap(){
-     //   if(!utils.inTradeTime()){
-       //     console.log("非交易时间")
-         //   return;
-        //}
+       if(!utils.inTradeTime()){
+           console.log("非交易时间")
+           return;
+        }
         //init appData.stockMap
         if(appData.stockOrder != null && appData.stockOrder.length > 0){
             let parameter = utils.getFParameterByStock( appData.stockOrder);
