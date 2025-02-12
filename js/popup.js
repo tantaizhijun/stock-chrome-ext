@@ -39,8 +39,11 @@ document.getElementById("setting").addEventListener("click", function (e) {
     var currentGroup = null;
     var currentGroupKey = 0     //TODO 换页与刷新有bug
     let hover_refresh = function() {
-       
 
+        if (!utils.inTradeTime()) {
+            console.log("非交易时间");
+            return;
+        }
         //获取本地存储数据
         let hoverSettings = JSON.parse(localStorage.getItem("hoverSettings"));
         let appData = JSON.parse(localStorage.getItem("appData"));

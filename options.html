@@ -45,7 +45,7 @@
 		.delSt:hover{
 			display: inline
 		}
-		
+
         .group-wrapper .item{
             padding: 5px;
             margin: 5px 0;
@@ -122,17 +122,25 @@
                         <label for="scroll_interval" class="label-title">换页间隔时间(秒)：</label>
                         <input id="scroll_interval" type="text" value="6">
                     </div>
-
                 </div>
             </div>
 
             <div class="setting-group">
                 <h3 class="group-title">页面设置</h3>
                 <div class="group-wrapper">
-                    <div class="item">
+                    <span class="item">
                         <label for="is_show_dp" class="label-title">是否显示顶部大盘：</label>
                         <input id="is_show_dp" type="checkbox">
-                    </div>
+                    </span>
+                    <span class="item">
+                        <label for="is_show_icon" class="label-title">是否显示角标：</label>
+                        <input id="is_show_icon" type="checkbox">
+                    </span>
+                    <span class="item">
+                        <label for="is_hover" class="label-title">是否显示hover：</label>
+                        <input id="is_hover" type="text" value="1">
+                    </span>
+
                     <div class="item">
                         <label for="stock-column" class="label-title">列表显示列：</label>
                         <form class="stock-column" action="" id="stock-column">
@@ -165,10 +173,7 @@
                             </label>
                         </form>
                     </div>
-                    <div class="item">
-                        <label for="is_show_icon" class="label-title">是否显示角标：</label>
-                        <input id="is_show_icon" type="checkbox">
-                    </div>
+
                 </div>
             </div>
 
