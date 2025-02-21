@@ -112,11 +112,21 @@ $(document).ready(function () {
     function initManageList() {
         //列表
         let stockOrder = appData.stockOrder;
+        let stockMap = appData.stockMap;
         if (stockOrder) {
             let htmlList = "";
-            stockOrder.forEach(e => {
-                htmlList += "<span id='st" + e + "' class='stItem'>" + e + "</span>";
-            });
+            for(let e in stockOrder){
+                if(!stockOrder[e] || stockOrder[e]==""){
+                    continue;
+                }
+                let em = stockMap[stockOrder[e]];
+                if(em){
+                    htmlList += "<span id='st" + e + "' class='stItem'>" + stockOrder[e] +  "</span>" + "<span>" + em.name + "</span>" ;
+                }else {
+                    htmlList += "<span id='st" + e + "' class='stItem'>" + stockOrder[e] +  "</span>";
+                }
+
+            }
             document.getElementById("stockManage").innerHTML = htmlList
         }
 
