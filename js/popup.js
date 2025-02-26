@@ -106,7 +106,9 @@ document.getElementById("setting").addEventListener("click", function (e) {
 			
 			let title = "";
 			arr.forEach((a) => {
-				title += a['name'] + a['price'] +"("+a['rate']+")" + "\n</br>";
+				title += a['name']
+                    // + a['price']
+                    +"("+a['rate']+")" + "\n</br>";
 			})
 			
 			

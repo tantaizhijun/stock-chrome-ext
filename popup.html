@@ -1,106 +1,114 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="UTF-8"/>
-        <title>股票小助手</title>
-        <style type="text/css">
-		
-		#content{
-		color: #00000059
-		}
-           /* #content{
-                overflow: hidden;
-                font-size: 10px;
-                color: #9d9d9d;
-                width: 330px;
-                height: 330px;
-            }
-            .flex{
-                display: flex;
-                justify-content: space-around;
-                white-space: nowrap;
-            }
-            .dapan{
-                color: red;
-            }
-            .zhishu{
-                margin: 5px;
-            }
+<head>
+    <meta charset="UTF-8"/>
+    <title>股票小助手</title>
+    <style type="text/css">
 
-            .stock-wrapper{
-                /*overflow: scroll;*/
-                /*max-height: 400px;*/
-            }
-            .list-item span{
-                min-width: 60px;
-            }
-            .float-right{
-                float: right;
-            }
-            .footer{
-                text-align: center;
-                height: 15px;
-                /*color: #789;*/
-                margin: 5px 10px;
-                padding-top: 5px;
-                border-top: solid 1px #e7e7e7;
-                white-space: nowrap;
-            }
-            #setting{
-                cursor: pointer;
-                text-decoration: blink;
-                font-size: 13px;
-                font-weight: bold;
-            }
-			*/
-        </style>
-    </head>
-    <body>
-        <div class="footer">
-            <span id="setting" href="#" style="color:gray">----------------</span>
-        </div>
-        <div id="content" class="">
-            <div class="dapan-wrapper">
-                <div id="dapan" class="dapan flex">
-                    <!--<div class="zhishu ">
-                        <div class="flex">
-                            <span>上证</span>&nbsp<span>3462.45</span>
-                        </div>
-                        <div class="flex">
-                            <span>+12.24</span>&nbsp<span>+1.56%</span>
-                        </div>
-                    </div>
-                    <div class="zhishu">
-                        <div class="flex">
-                            <span>深证</span>&nbsp<span>34621.45</span>
-                        </div>
-                        <div class="flex">
-                            <span>+12230.24</span>&nbsp<span>+10.56%</span>
-                        </div>
-                    </div>
-                    <div class="zhishu">
-                        <div class="flex">
-                            <span>创业</span>&nbsp<span>34621.45</span>
-                        </div>
-                        <div class="flex">
-                            <span>+12301.24</span>&nbsp<span>+10.56%</span>
-                        </div>
-                    </div>
-					-->
+        #content {
+            color: #dad8d8
+        }
+
+        /*#content {*/
+        /*    overflow: hidden;*/
+        /*    font-size: 10px;*/
+        /*    color: #dad8d8;*/
+        /*    width: 330px;*/
+        /*    height: 330px;*/
+        /*}*/
+
+        /*.flex {*/
+        /*    display: flex;*/
+        /*    justify-content: space-around;*/
+        /*    white-space: nowrap;*/
+        /*}*/
+
+        /*.dapan {*/
+        /*    color: red;*/
+        /*}*/
+
+        /*.zhishu {*/
+        /*    margin: 5px;*/
+        /*}*/
+
+        /*.stock-wrapper {*/
+        /*    !*overflow: scroll;*!*/
+        /*    !*max-height: 400px;*!*/
+        /*}*/
+
+        .list-item span {
+            min-width: 60px;
+        }
+
+        .float-right {
+            float: right;
+        }
+
+        .footer {
+            text-align: center;
+            height: 15px;
+            color: #dad8d8;
+            margin: 1px 1px;
+            /*padding-top: 5px;*/
+            border-top: solid 1px #e7e7e7;
+            white-space: nowrap;
+        }
+
+        #setting {
+            cursor: pointer;
+            text-decoration: blink;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+<div class="footer">
+    <span id="setting" href="#">-----------</span>
+</div>
+<div id="content" class="">
+    <div class="dapan-wrapper">
+        <div id="dapan" class="dapan flex">
+            <!--<div class="zhishu ">
+                <div class="flex">
+                    <span>上证</span>&nbsp<span>3462.45</span>
+                </div>
+                <div class="flex">
+                    <span>+12.24</span>&nbsp<span>+1.56%</span>
                 </div>
             </div>
-            <div class="stock-wrapper">
-                <div id="stock-list">
-                    <div id="marks" style="text-align: center;font-size: 15px">未完功能</div>
+            <div class="zhishu">
+                <div class="flex">
+                    <span>深证</span>&nbsp<span>34621.45</span>
+                </div>
+                <div class="flex">
+                    <span>+12230.24</span>&nbsp<span>+10.56%</span>
                 </div>
             </div>
+            <div class="zhishu">
+                <div class="flex">
+                    <span>创业</span>&nbsp<span>34621.45</span>
+                </div>
+                <div class="flex">
+                    <span>+12301.24</span>&nbsp<span>+10.56%</span>
+                </div>
+            </div>
+            -->
         </div>
+    </div>
+    <div class="stock-wrapper">
+        <div id="stock-list">
+            <div id="marks" style="text-align: center;font-size: 15px">未完功能</div>
+        </div>
+    </div>
+</div>
 
-    </body>
-    <script src="js/jquery_1102.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/localStorage.js"></script>
-    <script src="js/popup.js"></script>
-    <script src="js/hover.js"></script>
-    <script src="js/booksmarks.js"></script>
+</body>
+<script src="js/jquery_1102.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/localStorage.js"></script>
+<script src="js/popup.js"></script>
+<script src="js/hover.js"></script>
+<script src="js/booksmarks.js"></script>
 
 </html>
