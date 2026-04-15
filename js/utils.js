@@ -48,6 +48,10 @@
                     return "s_sh" + s;
                 }else if(s.startsWith("30")){
 					return "s_sz" + s;
+				}else if(s.startsWith("688")){
+					return "s_sh" + s;
+				}else if(s.startsWith("92")){
+					return "s_bj" + s;
 				}
             }).join(",");
         },

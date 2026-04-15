@@ -47,14 +47,17 @@
 		}
 
         .group-wrapper .item{
-            padding: 5px;
+            padding: 0px;
             margin: 5px 0;
         }
         .item input{
             margin-top: 5px;
         }
+        .width80{
+            width: 80px;
+        }
         .label-title{
-            width: 120px;
+            width: 80px;
             font-weight: bold;
             font-size: 13px;
         }
@@ -108,19 +111,27 @@
                 <div class="group-wrapper flex">
                     <div class="item">
                         <label for="request_interval" class="label-title">刷新间隔(毫秒)：</label>
-                        <input id="request_interval" type="text" value="1000" disabled placeholder="1000=1秒">
+                        <input id="request_interval" class="width80" type="text" value="1000" disabled placeholder="1000=1秒">
                     </div>
                     <div class="item">
                         <label for="show_name_len" class="label-title">名称显示字数：</label>
-                        <input id="show_name_len" type="text" value="4" placeholder="1 - 4个字">
+                        <input id="show_name_len" class="width80"  type="text" value="4" placeholder="1 - 4个字">
                     </div>
                     <div class="item">
                         <label for="page_size" class="label-title">每页显示数量：</label>
-                        <input id="page_size" type="text" value="6">
+                        <input id="page_size" class="width80"  type="text" value="6">
                     </div>
                     <div class="item">
                         <label for="scroll_interval" class="label-title">换页间隔时间(秒)：</label>
-                        <input id="scroll_interval" type="text" value="6">
+                        <input id="scroll_interval" class="width80"  type="text" value="6">
+                    </div>
+                    <div class="item">
+                        <label for="is_sort" class="label-title">是否涨幅排序：</label>
+                        <input id="is_sort" class="width80"  type="checkbox" value="true">
+                    </div>
+                    <div class="item">
+                        <label for="is_next_page" class="label-title">是否翻页：</label>
+                        <input id="is_next_page" class="width80"  type="checkbox" value="true">
                     </div>
                 </div>
             </div>

@@ -64,11 +64,26 @@ $(document).ready(function () {
     })
 
     document.getElementById("is_hover").value = hoverSettingsLocal["isHover"];
-
     document.getElementById("is_hover").addEventListener("change", function () {
         var ishover = $(this).val();
         let hoverSettingsLocal = JSON.parse(localStorage.getItem("hoverSettings"));
         hoverSettingsLocal["isHover"] = ishover;
+        localStorage.setItem("hoverSettings", JSON.stringify(hoverSettingsLocal));
+    });
+
+    document.getElementById("is_sort").checked = hoverSettingsLocal["is_sort"];
+    document.getElementById("is_sort").addEventListener("change", function () {
+        var ishover = this.checked;
+        let hoverSettingsLocal = JSON.parse(localStorage.getItem("hoverSettings"));
+        hoverSettingsLocal["is_sort"] = ishover;
+        localStorage.setItem("hoverSettings", JSON.stringify(hoverSettingsLocal));
+    });
+
+    document.getElementById("is_next_page").checked = hoverSettingsLocal["is_next_page"];
+    document.getElementById("is_next_page").addEventListener("change", function () {
+        var ishover = this.checked;
+        let hoverSettingsLocal = JSON.parse(localStorage.getItem("hoverSettings"));
+        hoverSettingsLocal["is_next_page"] = ishover;
         localStorage.setItem("hoverSettings", JSON.stringify(hoverSettingsLocal));
     });
 
