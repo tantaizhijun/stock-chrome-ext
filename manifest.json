@@ -1,9 +1,10 @@
 {
-   "background": {
-      "scripts": ["js/jquery_1102.js","js/utils.js","js/localStorage.js","js/hover.js" ]
-   },
+   "content_scripts": [{
+		"matches":["https://*/*"],
+      "js": ["js/jquery_1102.js","js/utils.js","js/localStorage.js","js/hover.js" ]
+   }],
 
-   "browser_action": {
+   "action": {
       "default_icon": "img/icons/bbt3.png",
       "default_popup": "popup.html",
       "title": "title",
@@ -14,7 +15,7 @@
       "32": "img/icons/bbt3.png",
       "64": "img/icons/bbt3.png"
    },
-   "manifest_version": 2,
+   "manifest_version": 3,
    "name": "股票小助手",
-   "version": "1.0.0"
+   "version": "1.2.0"
 }
